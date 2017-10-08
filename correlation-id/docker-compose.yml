@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./app/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./app/usr/share/nginx/html/index.html:/usr/share/nginx/html/index.html
+  proxy:
+    container_name: proxy
+    image: openresty/openresty
+    ports:
+      - 80:80
+    volumes:
+      - ./proxy/usr/local/openresty/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf

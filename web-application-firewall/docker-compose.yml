@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./app/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app/etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./app/usr/share/nginx/html/index.html:/usr/share/nginx/html/index.html
+  waf-base:
+    container_name: waf-base
+    image: openresty/waf-base
+    build: ./openresty-waf-base
+    entrypoint: bash -c "exit 0"
+  waf:
+    container_name: waf
+    image: openresty/waf
+    depends_on:
+      - waf-base
+    build: ./waf
+    ports:
+      - 80:80
+    volumes:
+      - ./waf/usr/local/openresty/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
