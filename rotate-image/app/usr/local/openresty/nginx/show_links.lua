@@ -26,7 +26,7 @@ local function create_link(res, file)
   html_result = html_result .. "<a href='" .. href .. "'>" .. file .. " (" .. res .. ")</a><br/><br/>"
 end
 
-local resolutions = {"1280x1024", "1024x768", "800x600", "640x480"}
+local resolutions = {"1280x1024", "640x480"}
 local lfs = require "lfs"
 
 for file in lfs.dir(images_dir) do
@@ -36,6 +36,7 @@ for file in lfs.dir(images_dir) do
       create_link(res, file)
       create_link("nz-" .. res, file)
     end
+    html_result = html_result .. "<br/><br/>"
   end
 end
 
