@@ -1,0 +1,2 @@
+Example inspired by http://openmymind.net/An-Introduction-To-OpenResty-Part-2
+and https://github.com/openresty/lua-nginx-module#data-sharing-within-an-nginx-worker
