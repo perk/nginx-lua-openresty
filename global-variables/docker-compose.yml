@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: openresty/global-variables
+    build: app
+    ports:
+      - 80:80
+    volumes:
+      - ./app/usr/local/openresty/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./app/usr/local/openresty/nginx/counter.lua:/usr/local/openresty/nginx/counter.lua
+
+  concurrent:
+    container_name: concurrent
+    image: openresty/global-variables
+    build: app
+    ports:
+      - 88:80
+    volumes:
+      - ./app/usr/local/openresty/nginx/conf/nginx-1024.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./app/usr/local/openresty/nginx/counter.lua:/usr/local/openresty/nginx/counter.lua

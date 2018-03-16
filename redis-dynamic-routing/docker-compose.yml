@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  redis:
+    container_name: redis
+    image: redis
+
+  proxy:
+    container_name: proxy
+    image: openresty/openresty
+    ports:
+      - 80:80
+    volumes:
+      - ./proxy/usr/local/openresty/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+
+  foo:
+    container_name: foo
+    image: openresty/openresty
+    volumes:
+      - ./apps/usr/local/openresty/nginx/conf/nginx-foo.conf:/usr/local/openresty/nginx/conf/nginx.conf
+  bar:
+    container_name: bar
+    image: openresty/openresty
+    volumes:
+      - ./apps/usr/local/openresty/nginx/conf/nginx-bar.conf:/usr/local/openresty/nginx/conf/nginx.conf
+  baz:
+    container_name: baz
+    image: openresty/openresty
+    volumes:
+      - ./apps/usr/local/openresty/nginx/conf/nginx-baz.conf:/usr/local/openresty/nginx/conf/nginx.conf
+  qux:
+    container_name: qux
+    image: openresty/openresty
+    volumes:
+      - ./apps/usr/local/openresty/nginx/conf/nginx-qux.conf:/usr/local/openresty/nginx/conf/nginx.conf

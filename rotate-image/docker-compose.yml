@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: openresty/fun-with-images
+    build: app
+    ports:
+      - 80:80
+    volumes:
+      - ./app/usr/local/openresty/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./app/usr/local/openresty/nginx/image_server.lua:/usr/local/openresty/nginx/image_server.lua
+      - ./app/usr/local/openresty/nginx/show_links.lua:/usr/local/openresty/nginx/show_links.lua
+      - ./app/usr/local/openresty/nginx/images/:/usr/local/openresty/nginx/images/
+    tmpfs:
+      - /usr/local/openresty/nginx/cache/

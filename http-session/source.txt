@@ -1,0 +1,1 @@
+Example from https://github.com/bungle/lua-resty-session

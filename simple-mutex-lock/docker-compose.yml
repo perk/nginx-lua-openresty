@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: openresty/session
+    build: app
+    ports:
+      - 80:80
+    volumes:
+      - ./app/usr/local/openresty/nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
