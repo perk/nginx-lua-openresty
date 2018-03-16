@@ -1,1 +1,3 @@
-rotate-image/app/usr/local/openresty/nginx/cache/
+rotate-image/app/usr/local/openresty/nginx/cache/*.png
+rotate-image/app/usr/local/openresty/nginx/cache/*.jpg
+#!rotate-image/app/usr/local/openresty/nginx/cache/.keep
