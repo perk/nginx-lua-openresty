@@ -22,5 +22,7 @@ pause
 
 pause
 
+echo "############################ Show original and proxied body"
+pause
 firefox -private-window localhost:8080 &>/dev/null
-#firefox -private-window localhost:80 &>/dev/null
+firefox -private-window localhost:80 &>/dev/null
