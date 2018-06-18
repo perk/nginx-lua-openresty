@@ -23,6 +23,7 @@ local function calculate_signature(str)
 end
 
 local signature = calculate_signature(size .. "/" .. path)
+
 if signature ~= sig then
   return_not_found("invalid signature, valid one is: " .. signature)
 end
@@ -38,7 +39,7 @@ end
 
 file:close()
 
-local dest_fname = cache_dir .. ngx.md5(size .. "/" .. path) .. "." .. ext
+local dest_fname = cache_dir .. ngx.md5(sig .. "/" .. size .. "/" .. path) .. "." .. ext
 
 -- resize the image
 local magick = require("magick")
