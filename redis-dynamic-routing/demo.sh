@@ -4,6 +4,7 @@ function pause() {
   read -n1 -rsp $'...\n'
 }
 
+docker-compose down
 docker rm -f $(docker ps -a -q)
 docker-compose up -d --force-recreate
 

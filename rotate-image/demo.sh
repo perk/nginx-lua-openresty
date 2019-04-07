@@ -3,6 +3,7 @@
 rm -rf app/usr/local/openresty/nginx/cache/*.jpg
 rm -rf app/usr/local/openresty/nginx/cache/*.png
 
+docker-comspose down
 docker rm -f $(docker ps -a -q)
 docker-compose up -d --force-recreate #&& docker-compose logs --follow
 
