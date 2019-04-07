@@ -12,6 +12,7 @@ pause
 
 echo "############################ Configuring Kong database"
 pause
+docker-compose run kong kong migrations bootstrap
 docker-compose run kong kong migrations up
 echo
 
